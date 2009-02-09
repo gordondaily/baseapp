@@ -1,0 +1,9 @@
+.setting.textfield{ :id => "setting=#{setting.id}" }
+  %p
+    %strong
+      = setting.label
+    %br
+    %small
+      = setting.description
+  %p
+    = text_field_tag("settings[#{setting.id}]", setting.value.to_s, :size => 40 )

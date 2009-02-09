@@ -1,0 +1,13 @@
+%ul
+  %li{ :style => "float: right;" }
+    %a{ :href => "#" }
+      Tab 1
+  %li{ :style => "float: right;" }
+    %a{ :href => "#" }
+      Tab 2
+  %li
+    = tab_to "Dashboard", [{:controller => "dashboard" }]
+  %li
+    = tab_to "Ping Tab"
+  %li
+    = tab_to "Pong Tab"

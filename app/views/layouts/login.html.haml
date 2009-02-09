@@ -1,0 +1,22 @@
+%html{ "xml:lang" => "en", :lang => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-Type" }
+    %title
+      = configatron.site_name
+    = stylesheet_link_merged :dialog
+    = javascript_include_merged :base
+  %body
+    #main
+      #left
+        %h2.head
+          = yield_or_default yield(:header), "Use 'content_for :header do; end' in your view to set this title"
+        = flash_message
+        #screen
+          = yield
+    #footer
+      = configatron.site_name
+      by
+      = configatron.company_name
+      %br
+      Copyright ©
+      = configatron.company_name

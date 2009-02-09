@@ -1,0 +1,26 @@
+- content_for :header do
+  Login Recovery
+- unless @user.nil?
+  %p
+    An email containing your
+    = configatron.site_name
+    account's login has been dispatched to you at
+    %em
+      = @user.email
+    \.
+  #submitbutton
+    %p
+      = link_to "Login now &raquo;", login_url
+- else
+  %p
+    Please enter the email address associated with your account. We will send you an email with your login shortly.
+  - form_tag user_forgot_login_url, :method => :put do
+    %p
+      %label
+        Your email address
+      %br
+      = text_field_tag :email
+    #submitbutton
+      %p
+        = submit_tag 'Send me my login &raquo;'
+  

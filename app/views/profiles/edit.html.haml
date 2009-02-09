@@ -1,0 +1,22 @@
+- if @profile.nil?
+  - content_for :header do
+    Profile not be found
+  %p
+    The profile you requested does not exist.
+- else
+  - content_for :header do
+    Editing my profile
+  = render :partial => 'profiles/my_account' if current_user == @user
+  - unless @profile.user.not_using_openid?
+    %p
+      This is your
+      = configatron.site_name
+      profile. It's not related to your OpenID Identity.
+  - form_for :profile, @profile, :url => profile_url(@profile.user), :html => {:method => :put} do |f|
+    - @profile.public_attributes.each do |column|
+      %p
+        %label
+          = column.humanize
+        %br
+        = input "profile", "#{column}", :value => @profile.send(column)
+    = submit_tag "Save changes"

@@ -1,0 +1,15 @@
+- if @profile.nil?
+  - content_for :header do
+    Profile not be found
+  %p
+    The profile you requested does not exist.
+- else
+  - content_for :header do
+    - if current_user == @user
+      My Account
+    - else
+      Profile for
+      = @user.login
+  = render :partial => 'profiles/my_account' if current_user == @user
+  = render :partial => 'profiles/account_details' if current_user == @user
+  = render :partial => 'profiles/profile_details'

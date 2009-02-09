@@ -1,0 +1,18 @@
+- content_for :header do
+  Application Settings
+- content_for :sidebar do
+  %p
+    These are site-wide settings. They will be used through-out your application.
+  %p
+    To add new settings, simple create a new row in the 'settings' table.
+- form_tag :action => 'update' do
+  %h3
+    General
+  %p
+    There are currently no settings available.
+  - #= settings_field(Setting.load(:identifier))
+  /
+    uncomment this if you make settings available.
+    <div id="submitbutton">
+    <p><haml:loud> submit_tag 'Save Settings' </haml:loud></p>
+    </div>
